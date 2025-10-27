@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>KleanHut — Cleaning Services</title>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    :root{
+      --brand:#0b69ff;      /* deep blue for headings/button */
+      --accent:#00a3b5;     /* accent if needed */
+      --muted:#6b7280;      /* gray text */
+      --bg:#f8fafc;         /* page background */
+      --card:#ffffff;
+      --maxw:1100px;
+      --radius:12px;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    html,body{height:100%;}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:#0f172a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    .container{
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:24px;
+    }
+
+    /* header */
+    header.topbar{
+      background:#fff;
+      box-shadow:0 4px 18px rgba(12,18,30,0.06);
+      position:sticky;
+      top:0;
+      z-index:50;
+    }
+    .topbar .container{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .logo{
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+    .logo .mark{
+      width:52px;height:52px;border-radius:10px;
+      background:linear-gradient(135deg,#2dd4bf,#0ea5e9);
+      display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:20px;
+      box-shadow:0 6px 18px rgba(14,165,233,0.12);
+    }
+    .logo h1{margin:0;font-size:20px;letter-spacing:-0.2px;}
+    nav.topnav{display:flex;gap:18px;align-items:center;font-weight:500;}
+    nav.topnav a{color:var(--muted);text-decoration:none;}
+    .contact-inline{display:flex;flex-direction:column;align-items:flex-end;font-size:13px;color:var(--muted);}
+    .contact-inline a{color:#0b69ff;text-decoration:none;font-weight:600;}
+
+    /* hero */
+    .hero{
+      margin-top:18px;
+      position:relative;
+      border-radius:14px;
+      overflow:hidden;
+      min-height:420px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .hero img{width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.02) saturate(1.05);}
+    .hero .overlay{
+      position:absolute;inset:0;background:linear-gradient(180deg, rgba(2,6,23,0.18) 10%, rgba(2,6,23,0.55) 65%);
+      display:flex;align-items:center;justify-content:center;padding:28px;
+    }
+    .hero .content{
+      color:white;max-width:980px;text-align:center;padding:12px;
+    }
+    .hero h2{font-size:44px;line-height:1.02;margin:0;font-weight:800;letter-spacing:-0.6px;}
+    .hero p{margin:14px 0 22px;color:rgba(255,255,255,0.92);font-size:18px;}
+    .btn-primary{
+      display:inline-block;padding:12px 22px;border-radius:10px;background:var(--brand);
+      color:#fff;text-decoration:none;font-weight:700;box-shadow:0 10px 30px rgba(11,105,255,0.18);
+    }
+
+    /* services */
+    .services{
+      margin-top:34px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+    }
+    .card{
+      background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 8px 28px rgba(12,18,30,0.06);
+    }
+    .card img{width:100%;height:160px;object-fit:cover;display:block;}
+    .card .body{padding:18px;}
+    .card h4{margin:0 0 8px;font-size:18px;}
+    .card p{margin:0;color:var(--muted);font-size:14px;line-height:1.45;}
+
+    /* get in touch section */
+    .contact-block{
+      margin-top:48px;
+      background:linear-gradient(180deg,#fff 0,#fbfdff 100%);
+      border-radius:12px;padding:28px;display:flex;align-items:center;gap:28px;
+      box-shadow:0 6px 22px rgba(12,18,30,0.04);
+    }
+    .contact-left{flex:1}
+    .contact-left h3{margin:0;font-size:28px;}
+    .contact-left p{color:var(--muted);margin-top:10px;}
+    .contact-right{
+      width:320px;background:#fff;border-radius:10px;padding:16px;border:1px solid #eef2f7;
+      display:flex;flex-direction:column;gap:12px;
+    }
+    .contact-row{display:flex;align-items:center;gap:12px}
+    .contact-row i{font-size:20px;color:var(--brand);width:36px;text-align:center}
+    .contact-row a{color:#0b69ff;text-decoration:none;font-weight:700}
+
+    /* footer */
+    footer{margin-top:42px;padding:28px 0;text-align:center;color:var(--muted);font-size:14px}
+
+    /* responsive */
+    @media(max-width:980px){
+      .services{grid-template-columns:repeat(2,1fr);}
+      .contact-right{width:260px}
+      .hero h2{font-size:36px}
+    }
+    @media(max-width:640px){
+      .topbar .container{flex-direction:column;align-items:flex-start;gap:12px}
+      nav.topnav{display:none}
+      .contact-inline{align-items:flex-start}
+      .services{grid-template-columns:1fr}
+      .contact-block{flex-direction:column;align-items:stretch}
+      .contact-right{width:100%}
+      .hero{min-height:360px}
+      .hero h2{font-size:28px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- header -->
+  <header class="topbar">
+    <div class="container">
+      <div class="logo">
+        <div class="mark">KH</div>
+        <div>
+          <h1>KleanHut</h1>
+          <div style="font-size:12px;color:var(--muted);margin-top:3px">Professional Residential & Commercial Cleaning</div>
+        </div>
+      </div>
+
+      <nav class="topnav">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="contact-inline">
+        <a href="tel:+16473250756">647-325-0756</a>
+        <a href="mailto:kleanhutt@gmail.com" style="color:var(--muted);font-weight:600">kleanhutt@gmail.com</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- hero -->
+  <main class="container">
+    <!-- Put your uploaded hero image in same folder and name it hero.png OR update the filename below -->
+    <section class="hero">
+      <img src="hero.png" alt="cleaners cleaning - hero image">
+      <div class="overlay">
+        <div class="content">
+          <h2>Cleaning Services</h2>
+          <p>Providing exceptional cleaning services for homes and businesses across Medicine Hat.</p>
+          <a class="btn-primary" href="#contact">Get a Free Quote</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" style="margin-top:28px;">
+      <h3 style="font-size:28px;margin:0 0 18px;">Our Services</h3>
+      <p style="color:var(--muted);margin:0 0 18px;">Housekeeping, commercial cleaning, carpet & upholstery cleaning — tailored to your needs.</p>
+
+      <div class="services" aria-hidden="false">
+        <div class="card">
+          <img src="service1.jpg" alt="Residential cleaning">
+          <div class="body">
+            <h4>Residential Cleaning</h4>
+            <p>Regular cleans, deep cleans and move-in / move-out cleaning that leaves your home spotless.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="service2.jpg" alt="Commercial cleaning">
+          <div class="body">
+            <h4>Commercial Cleaning</h4>
+            <p>Flexible scheduling and professional service for offices, shops and other businesses.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="service3.jpg" alt="Carpet cleaning">
+          <div class="body">
+            <h4>Carpet Cleaning</h4>
+            <p>Steam cleaning and stain removal for carpets and upholstery — restoring your surfaces.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" style="margin-top:34px;">
+      <div style="background:#fff;border-radius:12px;padding:22px;box-shadow:0 8px 30px rgba(12,18,30,0.04);">
+        <h3 style="margin:0;font-size:22px;">About KleanHut</h3>
+        <p style="color:var(--muted);margin-top:10px">KleanHut proudly serves the Medicine Hat area with trained, insured teams and eco-friendly products. We focus on reliability, safety and outstanding results.</p>
+      </div>
+    </section>
+
+    <!-- Get in touch -->
+    <section style="margin-top:30px;">
+      <div class="contact-block">
+        <div class="contact-left">
+          <h3>Get in Touch</h3>
+          <p>Have a question or need a free quote? We’d love to hear from you. Fast responses and transparent pricing.</p>
+        </div>
+
+        <div class="contact-right" id="contact">
+          <div class="contact-row">
+            <i class="fa-solid fa-phone"></i>
+            <div><div style="font-size:13px;color:var(--muted)">Call us</div><a href="tel:+16473250756">647-325-0756</a></div>
+          </div>
+
+          <div class="contact-row">
+            <i class="fa-regular fa-envelope"></i>
+            <div><div style="font-size:13px;color:var(--muted)">Email</div><a href="mailto:kleanhutt@gmail.com">kleanhutt@gmail.com</a></div>
+          </div>
+
+          <div class="contact-row">
+            <i class="fa-solid fa-location-dot"></i>
+            <div><div style="font-size:13px;color:var(--muted)">Service area</div><div style="font-weight:700">Medicine Hat Area</div></div>
+          </div>
+
+          <div style="display:flex;gap:10px;margin-top:8px">
+            <a href="https://instagram.com/kleanhut" target="_blank" style="flex:1;background:#fff;border-radius:8px;padding:10px;border:1px solid #eef2f7;text-align:center;text-decoration:none;color:#d9368a"><i class="fa-brands fa-instagram"></i> Instagram</a>
+            <a href="https://tiktok.com/@kleanhut" target="_blank" style="flex:1;background:#000;border-radius:8px;padding:10px;text-align:center;text-decoration:none;color:#fff"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer style="margin-top:40px;text-align:center;color:var(--muted);padding:26px 0;">
+      © <span id="year"></span> KleanHut — All rights reserved.
+    </footer>
+  </main>
+
+  <script>
+    // set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
